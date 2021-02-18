@@ -10,6 +10,11 @@
       "StackName": "amplify-flutteramplifydatast-staging-230650",
       "StackId": "arn:aws:cloudformation:us-west-2:088987693321:stack/amplify-flutteramplifydatast-staging-230650/fdc2f630-6d86-11eb-8a79-0a33ecedf3bf",
       "AmplifyAppId": "d5424na4yo75d"
+    },
+    "categories": {
+      "auth": {
+        "flutteramplifydatastoredemo7b39f84d": {}
+      }
     }
   }
 }

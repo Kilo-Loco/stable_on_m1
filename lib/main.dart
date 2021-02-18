@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:amplify_api/amplify_api.dart';
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_datastore/amplify_datastore.dart';
 import 'package:amplify_datastore/types/DataStoreHubEvents/DataStoreHubEvent.dart';
 import 'package:amplify_flutter/amplify.dart';
@@ -32,7 +35,7 @@ class _MyAppState extends State<MyApp> {
           AmplifyDataStore(modelProvider: ModelProvider.instance);
       await Amplify.addPlugin(dataStorePlugin);
       await Amplify.addPlugin(AmplifyAPI());
-
+      await Amplify.addPlugin(AmplifyAuthCognito());
       await Amplify.configure(amplifyconfig);
       print('Amplify configured');
       // await Amplify.DataStore.clear();
@@ -59,11 +62,12 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  StreamSubscription sub;
   void _observeHub() {
-    final sub = Amplify.Hub.listen([HubChannel.DataStore], (hubEvent) {
+    print('started observing hub');
+    sub = Amplify.Hub.listen([HubChannel.DataStore], (hubEvent) {
       final dshubevent = hubEvent as DataStoreHubEvent;
       print('hub event: ${dshubevent.eventName}');
     });
-    print(sub);
   }
 }

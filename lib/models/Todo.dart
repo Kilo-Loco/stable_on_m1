@@ -65,8 +65,8 @@ class Todo extends Model {
     var buffer = new StringBuffer();
 
     buffer.write("Todo {");
-    buffer.write("id=" + "$id" + ", ");
-    buffer.write("body=" + "$body" + ", ");
+    buffer.write("id=" + id + ", ");
+    buffer.write("body=" + body + ", ");
     buffer.write(
         "isComplete=" + (isComplete != null ? isComplete.toString() : "null"));
     buffer.write("}");

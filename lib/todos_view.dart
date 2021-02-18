@@ -121,22 +121,23 @@ class _TodosViewState extends State<TodosView> {
     print("observing todos");
     final stream = Amplify.DataStore.observe(Todo.classType);
     stream.listen((event) {
-      print('${event.eventType} occured');
-      setState(() {
-        switch (event.eventType) {
-          case EventType.create:
-            _todos.add(event.item);
-            break;
-          case EventType.update:
-            final index = _todos.indexWhere((todo) => event.item.id == todo.id);
-            _todos[index] = event.item;
-            break;
-          case EventType.delete:
-            final index = _todos.indexWhere((todo) => event.item.id == todo.id);
-            _todos.removeAt(index);
-            break;
-        }
-      });
+      _getTodos();
+      // print('${event.eventType} occured');
+      // setState(() {
+      //   switch (event.eventType) {
+      //     case EventType.create:
+      //       _todos.add(event.item);
+      //       break;
+      //     case EventType.update:
+      //       final index = _todos.indexWhere((todo) => event.item.id == todo.id);
+      //       _todos[index] = event.item;
+      //       break;
+      //     case EventType.delete:
+      //       final index = _todos.indexWhere((todo) => event.item.id == todo.id);
+      //       _todos.removeAt(index);
+      //       break;
+      //   }
+      // });
     });
   }
 
